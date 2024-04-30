@@ -1,22 +1,22 @@
-#This is the list of pizzas that the shop sells
-pizzas_ = [[1, "Pepperoni", "$8.50"],
-           [2, "Meat Lovers", "$8.50"],
-           [3, "Margherita","$8.50"],
-           [4, "BBQ Chicken","$8.50"],
-           [5, "Chicken Bacon & Aioli","$8.50"],
-           [6, "Veggie","$8.50"],
-           [7, "Hawaiian","$8.50"],
-           [8, "Plain Cheese","$5"], 
-           [9, "Greek Lamb","$5"],
-           [10, "Garlic Prawn","$5"],
-           [11, "Spicy Pepper","$5"],
-           [12, "Ham & Cheese","$5"]]
+# This is the list of pizzas that the shop sells
+pizzas_ = [[1, "Pepperoni", "$13.50"],
+           [2, "Meat Lovers", "$13.50"],
+           [3, "Margherita","$13.50"],
+           [4, "BBQ Chicken","$13.50"],
+           [5, "Chicken Bacon & Aioli","$13.50"],
+           [6, "Veggie","$13.50"],
+           [7, "Hawaiian","$13.50"],
+           [8, "Plain Cheese","$8.50"], 
+           [9, "Greek Lamb","$8.50"],
+           [10, "Garlic Prawn","$8.50"],
+           [11, "Spicy Pepper","$8.50"],
+           [12, "Ham & Cheese","$8.50"]]
 
 pizza_chosen = []
-#this varible sets the code to loop or not
+# this varible sets the code to loop or not
 loop = True
 
-#this is the funtion that prints of the list of pizzas that the shop sells. 
+# this is the funtion that prints of the list of pizzas that the shop sells. 
 def pizza_menu():
   '''
   When the user selects the pizza menu, the program will print the menu. 
@@ -29,19 +29,34 @@ def pizza_menu():
   '''
   print("These Are the Pizzas we sell:")
   for pizza in pizzas_:
-    print(pizza[0],'-',' - '.join(pizza[1:3]))
+    print("|", pizza[0],'-',' - '.join(pizza[1:3]), "|")
 
 
-
+# This is the function that allows the user to choose a pizza they want to order.
 def pizza_order():
+  '''
+  When the user selects pizza_order, the program will ask the user to input the number of the pizza they want to order.
+  E.g below 
+
+  Would you like to order a pizza?
+  "Pepperoni"
+  Added a Pepperoni pizza to your order.
+
+  if the user inputs a pizza that is not in the list, the program will ask the user to input a valid one.
+  E.g below 
+
+  Would you like to order a pizza?
+  "Beef And Herbs"
+  Sorry, we don't have that pizza here.
+  '''
   user_pizza = input("What pizza would you like to order?")
   for pizza in pizzas_:
     if user_pizza.lower() == pizza[1].lower():
-      print(f"You ordered a {pizza[1]} pizza.")
+      print(f"Added a {pizza[1]} pizza to your order.")
       pizza_chosen.append(pizza[1:3])
       break
     elif user_pizza.lower() not in [pizza[1].lower() for pizza in pizzas_]:
-      print("Sorry, we don't have that pizza.")
+      print("Sorry, we don't have that pizza here.")
       break
 
 
@@ -51,7 +66,7 @@ def pizza_checkout():
 def pizza_payment():
   print("test")
 
-#this is the main code block
+# this is the main code block
 print("Welcome to the Pizza Shop")
 while loop is True:
   menu_select = input("Please Select an Option:\n1 - Pizza Menu\n2 - Add Pizza To Order\n3 - Checkout\n4 - Exit\n-> ")
