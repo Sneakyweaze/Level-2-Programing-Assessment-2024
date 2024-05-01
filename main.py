@@ -1,11 +1,12 @@
+import time
 # This is the list of pizzas that the shop sells
 pizzas_ = [[1, "Pepperoni", "$13.50"],
            [2, "Meat Lovers", "$13.50"],
            [3, "Margherita","$13.50"],
            [4, "BBQ Chicken","$13.50"],
            [5, "Chicken Bacon & Aioli","$13.50"],
-           [6, "Veggie","$13.50"],
-           [7, "Hawaiian","$13.50"],
+           [6, "Veggie","$8.50"],
+           [7, "Hawaiian","$8.50"],
            [8, "Plain Cheese","$8.50"], 
            [9, "Greek Lamb","$8.50"],
            [10, "Garlic Prawn","$8.50"],
@@ -27,9 +28,11 @@ def pizza_menu():
   3 - Margherita - $8.50
   ect. until the 2D list is finished, meaning that you can add and remove pizzas from the list.
   '''
+  time.sleep(0.75)
   print("These Are the Pizzas we sell:")
   for pizza in pizzas_:
-    print("|", pizza[0],'-',' - '.join(pizza[1:3]), "|")
+    time.sleep(0.75)
+    print( pizza[0],'-',' - '.join(pizza[1:3]))
 
 
 # This is the function that allows the user to choose a pizza they want to order.
@@ -49,26 +52,37 @@ def pizza_order():
   "Beef And Herbs"
   Sorry, we don't have that pizza here.
   '''
+  time.sleep(0.75)
   user_pizza = input("What pizza would you like to order?")
   for pizza in pizzas_:
     if user_pizza.lower() == pizza[1].lower():
+      time.sleep(0.75)
+      
       print(f"Added a {pizza[1]} pizza to your order.")
       pizza_chosen.append(pizza[1:3])
-      break
+      continue
+      
     elif user_pizza.lower() not in [pizza[1].lower() for pizza in pizzas_]:
+      time.sleep(0.75)
       print("Sorry, we don't have that pizza here.")
-      break
+      continue
 
 
 def pizza_checkout():
   for pizza in pizza_chosen:
     print(pizza[0],'-' ,' - '.join(pizza[0:2]))
+    time.sleep(0.75)
+  print("These Are All Of The Pizzas You have on your Order")
+  time.sleep(0.75)
+
 def pizza_payment():
+  time.sleep(0.75)
   print("test")
 
 # this is the main code block
 print("Welcome to the Pizza Shop")
 while loop is True:
+  time.sleep(0.75)
   menu_select = input("Please Select an Option:\n1 - Pizza Menu\n2 - Add Pizza To Order\n3 - Checkout\n4 - Exit\n-> ")
   if menu_select == "1":
     print("\n")
@@ -86,9 +100,11 @@ while loop is True:
     print("\n")
     continue 
   elif menu_select == "4":
+    time.sleep(0.75)
     print("Thank you for visiting the Pizza Shop.")
     loop = False
   else:
     print("\n")
+    time.sleep(0.75)
     print("Please Select a Valid Option")
     print("\n")
