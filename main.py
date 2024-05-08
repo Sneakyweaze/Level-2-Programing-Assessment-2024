@@ -15,10 +15,11 @@ pizzas_ = [[1, "Pepperoni", "$13.50", 13.50],
 
 # This is the list of chosen pizzas added to your order
 pizza_chosen = []
+# This the varible that the total price of the pizzas is stored
 global pizza_price
 
 # this varible sets the code to loop or not
-loop = True
+global loop 
 
 # this is the funtion that prints of the list of pizzas that the shop sells. 
 def pizza_menu():
@@ -115,28 +116,91 @@ def pizza_checkout():
    print("This isn't a valid option")
     
 def pizza_payment():
+  
   print("\n")
   deliver = input("Do You Want Your Pizza To Be delivered? Y/N -> ")
   if deliver.upper() == "Y":
     print("Please Enter The Required infomaction")
     time.sleep(0.75)
-    name = input("Name -> ")
+    name = str(input("Name -> "))
     time.sleep(0.50)
-    phone_number = input("Phone Number -> ")
+    phone_number = int(input("Phone Number -> "))
     time.sleep(0.50)
     address = input("Address -> ")
     time.sleep(0.50)
     print("\n")
     print("\n")
     print("Order Cost: $",pizza_price)
-    print("Shipping Cost: $ 2.50")
+    time.sleep(0.25)
+    print("Delivery Cost: $ 2.50")
+    time.sleep(0.25)
     print("Total Cost: $",pizza_price + 2.50)
+    time.sleep(0.25)
+    print("\n")
+    
+  elif deliver.upper() == "N":
+    address = None
+    print("Please Enter The Required infomaction")
+    time.sleep(0.75)
+    name = input("Name -> ")
+    time.sleep(0.50)
+    print("\n")
+    print("Total Cost: $",pizza_price)
+    time.sleep(0.25)
+    print("\n")
+  
+  else:
+    print("This isn't a valid option")
+    pizza_payment()
+  order_complete =input("Finish Order? Y/N -> ")
+  if order_complete.upper() =="Y":
+    print("Thank You For Ordering")
+    time.sleep(0.75)
+    
+    if deliver.upper() == "Y":
+      print("Your Pizza Will Be Delivered To", address)
+      print("\n\n\n\n\n\n\n\n\n\n\n")
+      print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+      print("Name:",name)
+      print("Address:",address)
+      print("Phone Number:",phone_number)
+      for pizza in pizza_chosen:
+        print(pizza[0],'-' ,' - '.join(pizza[1:3]))
+      print("Order Cost: $",pizza_price)
+      print("Delivery Cost: $ 2.50")
+      print("Total Cost: $",pizza_price + 2.50)
+      print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+      print("\n\n\n\n\n\n\n\n\n\n\n")
+
+    elif deliver.upper() == "N":
+ 
+      print("\n\n\n\n\n\n\n\n\n\n\n")
+      print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+      print("Name:",name)
+      for pizza in pizza_chosen:
+        print(pizza[0],'-' ,' - '.join(pizza[1:3]))
+      print("Total Cost: $",pizza_price)
+      print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+      print("\n\n\n\n\n\n\n\n\n\n\n")
+    loop = False
+  elif order_complete.upper() =="N":
+    print("You will be return to the main menu")
+    
+  else:
+    print("This isn't a valid option")
+  
+      
     
  
 
 # this is the main code block
 pizza_price = 0.0
-print("Welcome to the Pizza Shop")
+print("Welcome to Crusty's Pizza Shop")
+pizza_chosen = []
+name = None
+phone_number = None
+address = None
+loop = True
 while loop is True:
   time.sleep(0.75)
   menu_select = input("Please Select an Option:\n1 - Pizza Menu\n2 - Add Pizza To Order\n3 - Checkout\n4 - Exit\n-> ")
@@ -157,7 +221,7 @@ while loop is True:
     continue 
   elif menu_select == "4":
     time.sleep(0.75)
-    print("Thank you for visiting the Pizza Shop.")
+    print("Thank you for visiting Crusty's Pizza Shop.")
     loop = False
   else:
     print("\n")
