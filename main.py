@@ -71,11 +71,29 @@ def pizza_order():
     elif user_pizza.lower() not in pizza[1].lower():
       time.sleep(0.10)
     
-  
+  another = input("Do you want to order another pizza? Y/N -> ")
+  if another.upper() == "Y":
+    pizza_order()
+  else: 
+    print("\n")
+    
 
-
+# this function tells the user what pizzas they have chosen and the price of the pizzas they have chosen, and then asks if they want to continue to payment.
 def pizza_checkout():
   '''
+  When the user selects pizza_checkout, the program will print the pizzas that the user has chosen and the price of the pizzas indevidualy .
+  E.g below
+
+  These Are All Of The Pizzas You have on your Order
+  Pepperoni - $13.50
+  Meat Lovers - $13.50
+  Plain Cheese - $8.50
+
+  Afterwards, the program will tell the user how much their order is.
+  E.g below
+  The Total Price Of Your Order Is $32.50
+
+  then the program will ask the user if they want to continue to payment. if they don't they will be returned to the main menu.
   
   '''
   print("These Are All Of The Pizzas You have on your Order")
@@ -86,10 +104,10 @@ def pizza_checkout():
   # this is the price of all the pizzas added to your order
   print("The Total Price of Your Order is: $", pizza_price)
   checkout_yn = input("Would you like to checkout? Y/N (You Will Not Be Able To Exit-> ")
-  if checkout_yn == "Y":
+  if checkout_yn.upper() == "Y":
     time.sleep(0.75)
     pizza_payment()
-  elif checkout_yn =="N":
+  elif checkout_yn.upper() =="N":
     time.sleep(0.75)
     print("You will be return to the main menu")
   else:
@@ -98,7 +116,23 @@ def pizza_checkout():
     
 def pizza_payment():
   print("\n")
-  print("test")
+  deliver = input("Do You Want Your Pizza To Be delivered? Y/N -> ")
+  if deliver.upper() == "Y":
+    print("Please Enter The Required infomaction")
+    time.sleep(0.75)
+    name = input("Name -> ")
+    time.sleep(0.50)
+    phone_number = input("Phone Number -> ")
+    time.sleep(0.50)
+    address = input("Address -> ")
+    time.sleep(0.50)
+    print("\n")
+    print("\n")
+    print("Order Cost: $",pizza_price)
+    print("Shipping Cost: $ 2.50")
+    print("Total Cost: $",pizza_price + 2.50)
+    
+ 
 
 # this is the main code block
 pizza_price = 0.0
